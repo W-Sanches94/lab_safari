@@ -26,7 +26,7 @@ CREATE TABLE animals(
 
 CREATE TABLE assignments(
     id SERIAL PRIMARY KEY,
-    employee_id INT REFERENCES employees,
+    employees_id INT REFERENCES employees,
     enclosures_id INT REFERENCES enclosures,
     day VARCHAR
 );
