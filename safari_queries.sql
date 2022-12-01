@@ -1,1 +1,2 @@
-SELECT * FROM enclosures WHERE enclosures.name = 'Rodents';
+SELECT animals.name FROM animals inner join enclosures
+on enclosures.id = animals.enclosures_id where enclosures_id =1;
