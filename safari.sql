@@ -1,13 +1,19 @@
-DROP assignments;
-DROP animals;
-DROP employees;
-DROP enclosures;
+DROP TABLE assignments;
+DROP TABLE animals;
+DROP TABLE employees;
+DROP TABLE enclosures;
 
-CREATE TABLE assignments(
+CREATE TABLE enclosures(
     id SERIAL PRIMARY KEY,
-    employee_id INT REFERENCES employees,
-    enclosures_id INT REFERENCES enclosures,
-    day VARCHAR
+    name VARCHAR,
+    capacity INT,
+    closedForMaintenance VARCHAR
+);
+
+CREATE TABLE employees(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR,
+    employeeNumber INT
 );
 
 CREATE TABLE animals(
@@ -18,43 +24,12 @@ CREATE TABLE animals(
     enclosures_id INT REFERENCES enclosures 
 );
 
-CREATE TABLE employees(
+CREATE TABLE assignments(
     id SERIAL PRIMARY KEY,
-    name VARCHAR,
-    employeeNumber INT
+    employee_id INT REFERENCES employees,
+    enclosures_id INT REFERENCES enclosures,
+    day VARCHAR
 );
-
-CREATE TABLE enclosures(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR,
-    capacity INT,
-    closedForMaintenance VARCHAR
-);
-
--- ASSIGNMENTS (entry into table)
-
-INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(1, 1, Monday);
-INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(2, 1, Monday);
-INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(3, 2, Tuesday);
-INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(4, 2, Tuesday);
-INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(5, 3, Wednesday);
-INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(6, 3, Wednesday);
-INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(7, 4, Thursday);
-INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(8, 4, Thursday);
-INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(9, 5, Friday);
-INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(10, 5, Friday);
-
---  ANIMALS (entry into table)
-
-INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Ozzy','Ostrich', 20, 1);
-INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Leonardo','Turtle', 15, 2);
-INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Shuri','Panther', 25, 3);
-INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Melman','Giraffe', 20, 4);
-INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Scrat','Squirrel', 19, 5);
-INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Stuart','Mouse', 13, 5);
-INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Blu','Macaw', 27, 1);
-INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Simba','Lion', 13, 3);
-INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Ed','Hyena', 13, 3);
 
 -- EMPLOYEES (entry into table)
 
@@ -71,9 +46,36 @@ INSERT INTO employees(name, employeeNumber) VALUES ('Rebecca',12350);
 
 -- ENCLOSURES (entry into table)
 
-INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Aviary','50', False);
-INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Amphibian House','50', False);
-INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Predatory Animals','50', False);
-INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Open Air','50', False);
-INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Rodents','50', False);
-INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Rodents','50', False);
+INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Aviary','50', 'False');
+INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Amphibian House','50', 'False');
+INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Predatory Animals','50', 'False');
+INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Open Air','50', 'False');
+INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Rodents','50', 'False');
+INSERT INTO enclosures(name, capacity, closedForMaintenance) VALUES('Rodents','50', 'False');
+
+--  ANIMALS (entry into table)
+
+INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Ozzy','Ostrich', 20, 1);
+INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Leonardo','Turtle', 15, 2);
+INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Shuri','Panther', 25, 3);
+INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Melman','Giraffe', 20, 4);
+INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Scrat','Squirrel', 19, 5);
+INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Stuart','Mouse', 13, 5);
+INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Blu','Macaw', 27, 1);
+INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Simba','Lion', 13, 3);
+INSERT INTO animals(name, type, age, enclosures_id) VALUES ('Ed','Hyena', 13, 3);
+
+-- ASSIGNMENTS (entry into table)
+
+INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(1, 1, 'Monday');
+INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(2, 1, 'Monday');
+INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(3, 2, 'Tuesday');
+INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(4, 2, 'Tuesday');
+INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(5, 3, 'Wednesday');
+INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(6, 3, 'Wednesday');
+INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(7, 4, 'Thursday');
+INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(8, 4, 'Thursday');
+INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(9, 5, 'Friday');
+INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(10, 5, 'Friday');
+
+
