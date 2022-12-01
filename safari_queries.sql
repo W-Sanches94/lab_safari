@@ -1,6 +1,1 @@
-
--- The names of the animals in a given enclosure
-
-
-
-
+SELECT * FROM enclosures WHERE enclosures.name = 'Rodents';
