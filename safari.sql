@@ -77,5 +77,3 @@ INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(7, 4, 'Thursday'
 INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(8, 4, 'Thursday');
 INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(9, 5, 'Friday');
 INSERT INTO assignments(employee_id, enclosures_id, day) VALUES(10, 5, 'Friday');
-
-
